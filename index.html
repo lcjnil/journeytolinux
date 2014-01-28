@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Journey to Linux</title>
+	<meta charset="UTF-8"/>
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<link rel="stylesheet" type="text/css" href="sunburst.css">
+</head>
+<body>
+	<div class="container">
+		<div class="bg">
+			<h1>Journey to Linux</h1>
+		</div>
+		<div class="head">
+			<h2>1 起步</h2>
+			<div class="bg">
+				<ul>
+					<li><a href="#1.0">1.0 这个是干什么的？</a></li>
+					<li><a href="#1.1">1.1 安装之前的准备</a>
+						<ul><a href="#1.1.1">1.1.1 两个问题</a></ul>
+						<ul><a href="#1.1.2">启动介质的准备</a></ul>
+					</li>
+				</ul>
+			</div>
+			<h3>1.0 这个是干什么的？</h3>
+			<p id="1.0">首先，你看到的这篇文章，不是一篇Linux的练级攻略本，也不是一篇快速入门Linux的技术文章，而是一篇笔者自己安装使用linux的游记，笔者做这个的想法，只是想介绍以下Linux，而且可以尽可能减少入门的难度.</p>
+			<p>如何阅读呢？本文的大部分内容都是可以【跟着做】，一般情况下，出入不会很大，你可以跟随着我的思路过程，接触了解Linux，同时，大部分的内容，我都提供了更加深入的内容,如果你有感兴趣可以进行更多的尝试,得到的收获自然也是不同的.</p>
+			<p>其次，希望读者可以有一种先搜后问的态度，当然有问题不解的可以给我发邮件：emlcjnil#gmail.com, 也欢迎各路大牛指证.</p>
+			<p>为什么是Linux？Linux是开源的，是免费的，同时也是充满魅力的，关于win的糟糕可以查看 <a href="http://coolshell.cn/articles/3008.html">Windows编程革命简史</a>, 而学习Linux可以获得各种各样的收获，这里就不赘述Linux的好处了</p>
+			<h3>1.1 安装之前的准备</h3>
+			<h4 id="1.1.1">两个问题</h4>
+			<p>本文是针对win平台的，Mac不太了解.首先，你需要明白你安装Linux的目的，究竟是玩一玩耍酷，还是准备长期使用。如果是前者，我推荐可以在虚拟机下进行安装，因为这样维护成本低，也不会出现莫名其妙的错误，如果是后者，我的建议是双系统，可以很方便的回到Win的怀抱。但如果想要完整的学习Linux，在实机下装是必须的！</p>
+			<p>我这里先假设读者是准备长期使用Linux，那么你需要面对的是如下几个问题,关系到双系统的安装和能否成功启动.
+			<ol>
+				<li>启动类型是UEFI还是Legacy</li>
+				<li>是双硬盘还是单硬盘</li>
+			</ol>
+			<p>首先，什么是UEFI？请参阅:<a href="http://zh.wikipedia.org/wiki/UEFI">wiki:UEFI</a>,而大部分2013年暑假买到的电脑,基本都是UEFI的BIOS,而读者必须明白的是，UEFI模式下的引导十分负责，稍有影响，就会导致你的WIndows 8无法正常引导（但是按照本文来操作，不太可能出现这种情况）,不过鉴于这种情况太复杂，我还是建议读者使用Legacy模式安装（不过这样的话需要你全盘格式化，并且重新安装Win8）.
+			具体启动类型的查看需.要进入到
+			BIOS里面，不同主板BIOS进入方式不同，开机是狂按F2或者ESC或者DELETE，(.如果是很
+			好看的图形化界面，那就是UEFI),然后找到BOOT MODE,检查以下是UEFI还是Legacy.</p>
+			<p>如果是Legacy，则不用担心这些问题.</p>
+			<p>其次，是多硬盘，还是单硬盘.如果你确信你的硬盘是2个及以上的话，那么恭喜你，第一个问题你完全不用考虑！无论哪一种方式安装，都会是轻松快捷,当然混合硬盘不属于双硬盘.</p>
+			</p>
+
+			<h4 id="1.1.2">启动介质的准备</h4>
+			<p>安装系统自然需要这个系统的介质,本文目前介绍的是Ubuntu Gnome 13.10,为什么选这个？因为Ubuntu目前可以说是人气最高（之一）的Linux发行版，BUG较少（比如我在Fedore openSUSE 都遇到了或多或少的问题）,而且由于Ubuntu的高人气，很多问题都可以很方便的Google到,至于什么是Gnome，可以参阅:<a href="http://zh.wikipedia.org/wiki/Gnome">wiki:GNOME</a>,选择GNOME是因为其定制性强，而且外表（虽然这完全不是重点）可以带给你抛弃Win的喜悦,不选择Ubuntu原生的Unity，是因为其丑陋，而且会有很多莫名其妙的问题.</p>
+			<p>下载地址:<a href="http://cdimage.ubuntu.com/ubuntu-gnome/releases/13.10/release/ubuntu-gnome-13.10-desktop-amd64.iso">Ubuntu-Gnome</a></p>
+			<p>而如何配置呢？刻成光盘么？完全没有必要，我们只需要将其烧录到U盘即可，在Win下下载一个ultraiso的试用版吧！然后选择[启动]--[写入硬盘镜像]烧录到U盘，这样启动介质就做好了！</p>
+			<h3>1.2 安装过程</h3>
+
+			<h2>2 基本配置</h2>
+			<div class="bg">
+				<ul>
+					<li><a href="#2.1">2.1显示</a>
+						<ul>
+							<li><a href="#2.1.1">双显卡的配置问题</a></li>
+							<li><a href="#2.1.2">分辨率设置问题</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<h3 id="2.1">2.1 显示</h3>
+
+			<h4 id="2.1.1">双显卡的配置问题</h4>
+			<p>关于双显卡在linux下工作的问题，其实我这里说多了估计大家也没什么意思，在这里，我只向大家介绍N卡的双显卡（因为我只有N卡本，而且A卡驱动之中就有直接的设置）.具体N卡双显卡的工作原理我不再赘述，大家可以参阅:<a href="http://zh.opensuse.org/SDB:Bumblebee">wiki:Bumblebee</a></p>
+			<p>不过Ubuntu在这方面还比较简单，具体下来只需要以下几个命令：</p>
+			<pre class="prettyprint">
+$ sudo add-apt-repository ppa:bumblebee/stable
+$ sudo apt-get update
+$ sudo apt-get install bumblebee virtualgl linuxheaders-generic
+			</pre>
+			<p>具体什么是apt-get可以参阅:<a href="http://zh.wikipedia.org/wiki/%E9%AB%98%E7%B4%9A%E5%8C%85%E8%A3%9D%E5%B7%A5%E5%85%B7">wiki:APT-RPM</a>,如果你是Fedora系的，可以参阅:<a href="http://zh.wikipedia.org/wiki/Yum">wiki:YUM</a></p>
+			<p>这几步做好之后，我们就成功的安装好了Bumblebee,现在，我们重启一下电脑,然后输入</p>
+			<pre class="prettyprint">
+$ lspci |grep VGA
+			</pre>
+			<p>返回如下信息,就代表你的双显卡配置成功了（电脑再也不会疯狂发热了</p>
+			<pre class="prettyprint">
+  00:02.0 VGA compatible controller: Intel Corporation 3rd Gen Core processor Graphics Controller (rev 09)
+  01:00.0 VGA compatible controller: NVIDIA Corporation GK107M [GeForce GT 650M] (rev ff)"
+			</pre>
+			<p>注意第二项表示的是独立显卡，如果是ff就是代表关闭，如果是a1就是代表开启,如果想用独显运行程序，只需要输入</p>
+			<pre class="prettyprint">
+$ optirun XXX
+			</pre>
+
+			<h4 id="2.1.2">分辨率设置问题</h4>
+			<p>某些设备，可能处于某些原因，并不能匹配到合适的分辨率，或者像我一样，习惯了双屏输出，可是第二屏并没有合适的分辨率，这个时候，我们需要手动设置以下分辨率,运行如下命令即可</p>
+			<pre class="prettyprint">
+$ cvt 1440 9000
+			</pre>
+			<p>会返回如下的信息</p>
+			<pre class="prettyprint">
+# 1440x900 59.89 Hz (CVT 1.30MA) hsync: 55.93 kHz; pclk: 106.50 MHz
+Modeline "1440x900_60.00"  106.50  1440 1528 1672 1904  900 903 909 934 -hsync +vsync
+			</pre>
+			<p>记录下来后面每个分辨率具体的数据，然后运行</p>
+			<pre class="prettyprint">
+$ xrandr --newmode "1440x900_60.00"  106.50  1440 1528 1672 1904  900 903 909 934 -hsync +vsync
+$ xrandr --addmode VGA1 1440x900_60.00
+$ xrandr --output VGA1 --mode 1440x900_60.00
+			</pre>
+			<p>注意，我这里输入的VGA1是的我第二屏，笔记本应该是LVDS1,具体可以输入xrandr查看.如果运行成功的话，分辨率就会变成你想要的样子，怎么样，比windows下简单多了吧（#可能读者并没有遇到win下分辨率异常的情况，但是笔者遇到的时候必须在显卡驱动里面设置才行，非常麻烦）</p>
+			<p>但是，这个设置只是暂时的，因为一关机设置又会变回原来的样子，稍微复杂一劳永逸的方法是修改xorg.conf,但那种方法有点点麻烦，这里介绍一个shell脚本的方法,什么是shell脚本，请看:<a href="http://www.92csz.com/study/linux/14.htm">Shell脚本入门</a></p>
+			<p>用一个文本器，输入：</p>
+			<pre class="prettyprint">
+#! /bin/bash
+xrandr --newmode "1440x900_60.00"  106.50  1440 1528 1672 1904  900 903 909 934 -hsync +vsync
+xrandr --addmode VGA1 1440x900_60.00
+xrandr --output VGA1 --mode 1440x900_60.00
+			</pre>
+			<p>保存为xxx.sh,然后给他加上可以运行的权限</p>
+			<pre class="prettyprint">
+$ chmod +x xxx.sh
+			</pre>
+			<p>以后，开机只要定位到这个sh文件的目录，然后运行</p>
+			<pre class="prettyprint">
+$ ./xxx.sh
+			</pre>
+			<p>就可以快速的修改分辨率了(而且这种方法显得很Geek)</p>
+		</div>
+	</div>
+
+	<script src="prettify.js"></script> 
+	<script src="jquery.js"></script>
+ 	<script>
+	$(function() {
+  		window.prettyPrint && prettyPrint();
+	});
+	</script>
+</body>
+</html>
