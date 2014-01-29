@@ -185,13 +185,62 @@ $ sudo apt-get install gnome-shell-extensions
 		<h3 id="3">3 常用软件/环境配置</h3>
 		<div class="bg">
 			<ul>
-				<li><a href="#3.1">科学上网</a></li>
+				<li><a href="#3.1">3.1 科学上网</a></li>
+				<li><a href="#3.2">3.2 虚拟机</a></li>
+				<li><a href="#3.3">3.3 c/c++开发环境设置</a></li>
 			</ul>
 		</div>
 		
-		<h4 id="3.1">科学上网</h4>
+		<h3 id="3.1">3.1 科学上网</h4>
 		<p>为什么要科学上网？因为可以和真正的国际接轨 <a href="http://zh.wikipedia.org/wiki/GFW">wiki:GFW</a>,同时,笔者也希望阅读此文档的人可以正确评价GFW,参阅: <a href="http://www.infzm.com/content/92480">方滨兴的墙内墙外</a></p>
 		<p>科学上网的工具,推荐<a href="https://code.google.com/p/goagent/">goagent</a>,至于教程,官方文档写的十分清楚,这里就不再赘述.</p>
+
+
+		<h3 id="3.2">3.2 虚拟机</h3>
+		<p>准备一个win的虚拟机,因为有些时候还是会.离不开Win <smal
+		l>很大程度上归结与宏福这边访问学校必须要挂VPN,然后这个VPN基于ActiveX</small>,而且还有一些Linux下暂时没有替代的软件 <small>比如说QQ,虽然Linux可以用Google的Hangouts,但应该很少人用吧.</small></p>
+		<p>虚拟机下有2个比较常用,一个是Oracle的免费VirtualBox,另一个是收费的VMware系列,但是在文档这里,我推荐的是:VMware Player.有2个原因,第一个是VMware Player是免费的,而且最新版允许新建虚拟机,第二个是因为VirtuaBox不够好用,很多东西都很恶心.</p>
+		<p><a href="https://my.vmware.com/web/vmware/free#desktop_end_user_computing/vmware_player/6_0">VMware Player下载地址</a></p>
+		<p>发现下载下来的文件是.bundle,那我们如何安装呢？只需要给其加上可以执行的属性即可.如何加权限?请看: <a href="#2.1.2">分辨率设置问题</a></p>
+		<p>安装过程一路下一步即可,这里不再赘述.</p>
+		<p>需要注意的是,虚拟机本身不带有系统,所以需要你自己下载一个系统镜像,这里不附带下载地址.整个虚拟机安装系统不会差太多,但如果你想用你自己备份好的GHO来恢复,需要注意之前要用分区软件重建虚拟磁盘分区表,并且设置为活动(Active),否则是无法引导的.</p>
+		<p>安装好系统之后,在虚拟机内部装好VMware Tools,具体在虚拟机的菜单里有Install VMware Tools这一项,完成这一项,虚拟机才可以自适应窗口,并且毫无压力的与主机进行数据交换.为了不影响主机的活动,可以将虚拟机发送到其他的工作区,这样就可以瞬间在Linux和Win之间切换,毫无压力.</p>
+
+		<h3 id="3.3">3.3 c/c++开发环境设置</h3>
+		<p>很多的OJ都是在Linux下评测程序的,所以设置一个c/c++开发环境是必要的.而Ubuntu里面默认只有gcc <small>这里的gcc狭义指gcc这个程序,不含g++和其他库,真正意义上的gcc请看:<a href="http://zh.wikipedia.org/wiki/Gcc">wiki:GCC</a></small>, 所以首先我们需要下载一些开发工具.</p>
+		<pre class="prettyprint">
+$ sudo apt-get install build-essential
+		</pre>
+		<p>这个时候,我们可以写一个简单的c程序测试一下,这里,我强烈推荐Vim这一款编辑器 <small>如果要深入的学习Linux,以后和Vim打交道的次数很多很多</small>, 学习Vim,请看: <a href="http://coolshell.cn/articles/5426.html">简明 Vim 练级攻略</a>.在Vim里写好一个简单的Hello,world,保存为hello.c</p>
+		<pre class="prettyprint">
+#include<stdio.h>
+int main() {
+	printf("Hello,world!\n");
+	return 0;
+}
+		</pre>
+		<p>还记得编译过程吗？请看如下的命令</p>
+		<pre class="prettyprint">
+$ gcc -E hello.c -o hello.i #预处理
+$ gcc –S hello.i –o hello.s #编译
+$ gcc –c hello.c –o hello.o #汇编
+$ gcc hello.o -o Hello      #连接
+$ ./hello
+  Hello,world!
+		</pre>
+		<p>其实一般情况下不用这么麻烦,只需要:</p>
+		<pre class="prettyprint">
+$ gcc hello.c -o hello
+		</pre>
+		<p>编译器我们已经准备好了,其实到这里一个开发环境已经做好了,但如果想更轻松的完成任务,我们还需要一个(集成开发环境) <small>什么？IDE是什么意思？<a href="http://tieba.baidu.com/p/1586899608">编辑器 编译器和集成开发环境</a></small></p>
+		<p>Linux以下一般常用的是Code::Blocks,这样安装即可:</p>
+		<pre class="prettyprint">
+$ sudo apt-get install codeblocks
+		</pre>
+		<p>只要熟悉Win里面CodeBlocks的操作,怎样使用不是难事,不过尴尬的是,其自带的终端不能复制粘贴,我们可以将其替换为普通的Terminal.只要Setting==>Environment...==>General Setting==>Terminal to lanuch console programs, 	用“gnome-terminal -t $TITLE -x”替换掉“xterm -T $TITLE -e”就搞定了</p>
+
+		<h3 id="3.3">Java开发环境设置</h3>
+		<p>首先在Oracle的<a href="http://www.oracle.com/technetwork/java/javase/downloads">官网</a>上下载最新的JDK</p>
 	</div> <!-- END .container !-->
 	<script src="js/prettify.js"></script> 
 	<script src="js/jquery.js"></script>
