@@ -10,6 +10,21 @@ h1 {
 h4 {	
 	font-style: italic;
 }
+a {
+	color:#4183C4;
+}
+a:hover {
+	color:#4183C4;
+}
+a:active {
+	color:#4183C4;
+}
+a:visited {
+	color:#4183C4;
+}
+.image {
+	text-align: center;
+}
 .container {
 	margin: 0 auto;
 	max-width: 940px;

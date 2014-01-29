@@ -17,8 +17,12 @@
 				<ul>
 					<li><a href="#1.0">1.0 这个是干什么的？</a></li>
 					<li><a href="#1.1">1.1 安装之前的准备</a>
-						<ul><a href="#1.1.1">1.1.1 两个问题</a></ul>
+						<ul><a href="#1.1.1">两个问题</a></ul>
 						<ul><a href="#1.1.2">启动介质的准备</a></ul>
+						<ul><a href="#1.1.3">硬盘分区</a></ul>
+					</li>
+					<li><a href="#1.2">1.2 安装过程</a>
+						<ul><a href="#1.2.1">UEFI + 单硬盘安装双系统</a></ul>
 					</li>
 				</ul>
 			</div>
@@ -35,7 +39,7 @@
 				<li>启动类型是UEFI还是Legacy</li>
 				<li>是双硬盘还是单硬盘</li>
 			</ol>
-			<p>首先，什么是UEFI？请参阅:<a href="http://zh.wikipedia.org/wiki/UEFI">wiki:UEFI</a>,而大部分2013年暑假买到的电脑,基本都是UEFI的BIOS,而读者必须明白的是，UEFI模式下的引导十分负责，稍有影响，就会导致你的WIndows 8无法正常引导（但是按照本文来操作，不太可能出现这种情况）,不过鉴于这种情况太复杂，我还是建议读者使用Legacy模式安装（不过这样的话需要你全盘格式化，并且重新安装Win8）.
+			<p>首先，什么是UEFI？请参阅:<a href="http://zh.wikipedia.org/wiki/UEFI">wiki:UEFI</a>,而大部分2013年暑假买到的电脑,基本都是UEFI的BIOS,而读者必须明白的是，UEFI模式下的引导十分<s>负责</s>复杂，稍有影响，就会导致你的WIndows 8无法正常引导（但是按照本文来操作，不太可能出现这种情况）,不过鉴于这种情况太复杂，我还是建议读者使用Legacy模式安装（不过这样的话需要你全盘格式化，并且重新安装Win8）.
 			具体启动类型的查看需.要进入到
 			BIOS里面，不同主板BIOS进入方式不同，开机是狂按F2或者ESC或者DELETE，(.如果是很
 			好看的图形化界面，那就是UEFI),然后找到BOOT MODE,检查以下是UEFI还是Legacy.</p>
@@ -47,7 +51,40 @@
 			<p>安装系统自然需要这个系统的介质,本文目前介绍的是Ubuntu Gnome 13.10,为什么选这个？因为Ubuntu目前可以说是人气最高（之一）的Linux发行版，BUG较少（比如我在Fedore openSUSE 都遇到了或多或少的问题）,而且由于Ubuntu的高人气，很多问题都可以很方便的Google到,至于什么是Gnome，可以参阅:<a href="http://zh.wikipedia.org/wiki/Gnome">wiki:GNOME</a>,选择GNOME是因为其定制性强，而且外表（虽然这完全不是重点）可以带给你抛弃Win的喜悦,不选择Ubuntu原生的Unity，是因为其丑陋，而且会有很多莫名其妙的问题.</p>
 			<p>下载地址:<a href="http://cdimage.ubuntu.com/ubuntu-gnome/releases/13.10/release/ubuntu-gnome-13.10-desktop-amd64.iso">Ubuntu-Gnome</a></p>
 			<p>而如何配置呢？刻成光盘么？完全没有必要，我们只需要将其烧录到U盘即可，在Win下下载一个ultraiso的试用版吧！然后选择[启动]--[写入硬盘镜像]烧录到U盘，这样启动介质就做好了！</p>
-			<h3>1.2 安装过程</h3>
+			<h4 id="1.1.3">硬盘分区</h4>
+			<p>如果你是双硬盘，那么可以用一整块硬盘安装Linux，这样是最方便的。但是我相信大部分情况下你只会有一块硬盘，这个时候，可以将最后一个win下的分区作为Linux安装的空间，但如果空间很多，可以用过PQ或者DQ之类的软件分割出来一块空间，但是“数据无价，操作谨慎”,望读者注意.</p>
+
+
+			<h3 id="1.2">1.2 安装过程</h3>
+			<h4 id="1.2.1">UEFI + 单硬盘安装双系统</h4>
+			<p>考虑到这种情况是最普遍的，所以从这种情况先说起.</p>
+			<p>首先，我们需要插入我们准备好的U盘，然后在win8里面选重启（注意，一定是重启！），如果你是win7，那大部分情况下你在确定启动格式的时候是错的(也就是说，你应该看下面一节).重启的时候狂按ESC(不同的主板可能不太一样，进入Boot Manager),见下图</p>
+			<div class="image"><img src="images/1.2.1-1.jpg" alt=""></div>
+			<p>我是通过光盘启动的，从U盘启动只需要选择U盘的那一项（注意，一定要选带UEFI字样的启动项）,接下来就是下一步下一步，相信这一点不会难倒读者,但是请注意安装类型！一定要选择其他选项，也就是说我们需要自己分区.</p>
+			<div class="image"><img src="images/1.2.1-2.jpg" alt=""></div>
+			<p>下面是初始的样子,前四个分区都是属于windows的，也就是说windows是3个你看不见的盘+系统盘+其他的盘(指UEFI下的win8),可以这样理解sda1~sda3都是win的引导分区,sda4是win的安装分区	,而我们需要单独对剩下的空间进行操作，见下下图</p>
+			<div class="image"><img src="images/1.2.1-3.jpg" alt=""></div>
+			<div class="image"><img src="images/1.2.1-4.png" alt=""></div>
+			<p>在安装系统的时候，这一点由于太激动没有截取到，后来我重新p了上去TAT，具体说来，最简单是划分三个分区/boot(采用ext2的格式) / (挂载根目录，采用默认的ext4) /swap(也就是挂载交换空间).最重要的，请务必确保引导文件安装在/boot分区上面!!!!</p>
+			<p>接下来就是漫长的等待了,不过相信读者安装完毕之后重新启动的时候绝大情况下会进入windows的引导，那我们的Linux去哪儿了呢？只要在开机的时候狂按ESC进去Boot Manager，就可以看到惊喜的Ubuntu了！之后每次开机，只要在Boot Manager中就可有选择我们想进入的系统，但是请注意，请务必在进入Ubuntu之前，windows选重启，而不是关机！</p>
+			<div class="image"><img src="images/1.2.1-5.jpg" alt=""></div>
+			
+			<h4 id="1.2.2">Legacy + 单硬盘安装双系统</h4>
+			<p>其实Legacy下的安装也没有多大的区别,只是开始需要在BIOS里面确定U盘为第一启动（我这里是光盘）</p>
+			<div class="image"><img src="images/1.2.2-1.png" alt=""></div>
+			<p>然后从U盘启动，一路正常的下一步，还是老样子，选择其他选项,自己分区</p>
+			<div class="image"><img src="images/1.2.2-2.png" alt=""></div>
+			<p>Legacy模式下安装的win8就不太一样了，引导分区从3个变成了一个，如下图</p>
+			<div class="image"><img src="images/1.2.2-3.png" alt=""></div>
+			<p>设置如下图,还是要注意引导器安装在/boot下</p>
+			<div class="image"><img src="images/1.2.2-4.png" alt=""></div>
+			<p>之后还是只会进入win8的引导，这个时候操作不太一样，我们需要在win8下安装EasyBcd这个软件,然后用它为Linux加装一个引导，操作十分简便，如下图</p>
+			<div class="image"><img src="images/1.2.2-5.png" alt=""></div>
+			<p>之后再重启，就会在Win8的引导里面出现Linux的引导了（因为win8很霸道，这样是比较方便的达成双系统的目的了）</p>
+
+			<p>而双硬盘，无论是那种情况都比较简单，单独安装到一个硬盘，就不用管乱七八糟的引导问题了，稍微最靠谱的，是在物理上让主板</p>
+
+
 
 			<h2>2 基本配置</h2>
 			<div class="bg">
