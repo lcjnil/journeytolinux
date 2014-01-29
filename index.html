@@ -99,6 +99,7 @@
 						<li><a href="#2.1.2">分辨率设置问题</a></li>
 					</ul>
 				</li>
+				<li><a href="#2.2">2.2 桌面环境</a></li>
 			</ul>
 		</div>
 		<h3 id="2.1">2.1 显示</h3>
@@ -159,11 +160,39 @@ $ chmod +x xxx.sh
 		<pre class="prettyprint">
 $ ./xxx.sh
 		</pre>
-		<p>就可以快速的修改分辨率了(而且这种方法显得很Geek)</p>
+		<p>就可以快速的修改分辨率了<small>而且这种方法显得很Geek</small></p>
 		
-	
-	</div> <!-- END .container !-->
 
+		<h4 id="2.2">2.2 桌面环境</h4>
+		<p>为什么要配置桌面环境呢？因为好看的环境会可以促使你放弃Win糟糕的界面.不过GNOME在这里十分方便,大部分时候只需要Click一下就可以了.</p>
+		<p>首先,安装Gnome-Tweak,可以更方便的优化</p>
+		<pre class="prettyprint">
+$ sudo apt-get install gnome-shell gnome-tweak-tool
+		</pre>
+		<p>然后安装Gnome-shell的插件程序,安装后搜索优化工具就可有打开</p>
+		<pre class="prettyprint">
+$ sudo add-apt-repository ppa:satyajit-happy/themes
+$ sudo apt-get update
+$ sudo apt-get install gnome-shell-extensions
+		</pre>
+		<p>这个时候,我们就可以很方便的安装插件啦!只需要登录: <a href="https://extensions.gnome.org/">Gnome-Extensions</a></p>
+		<p>在此,笔者推荐几个比较赞的插件:</p>
+		<p><a href="https://extensions.gnome.org/extension/613/weather/">Weather 天气插件</a></p>
+		<p><a href="https://extensions.gnome.org/extension/307/dash-to-dock/"> Dash to Dock 增加一个很方便的Dock栏</a></p>
+		<p><a href="https://extensions.gnome.org/extension/442/drop-down-terminal/">Drop Down Terminal 可以下滑显示的终端，相信这个插件会让你爱上Linux</a></p>
+		<p>其余的,可以自由的安装主题,这一内容,在日后补完<small>因为笔者觉得没多大必要</small>.</p>
+
+		<h3 id="3">3 常用软件/环境配置</h3>
+		<div class="bg">
+			<ul>
+				<li><a href="#3.1">科学上网</a></li>
+			</ul>
+		</div>
+		
+		<h4 id="3.1">科学上网</h4>
+		<p>为什么要科学上网？因为可以和真正的国际接轨 <a href="http://zh.wikipedia.org/wiki/GFW">wiki:GFW</a>,同时,笔者也希望阅读此文档的人可以正确评价GFW,参阅: <a href="http://www.infzm.com/content/92480">方滨兴的墙内墙外</a></p>
+		<p>科学上网的工具,推荐<a href="https://code.google.com/p/goagent/">goagent</a>,至于教程,官方文档写的十分清楚,这里就不再赘述.</p>
+	</div> <!-- END .container !-->
 	<script src="js/prettify.js"></script> 
 	<script src="js/jquery.js"></script>
  	<script>
