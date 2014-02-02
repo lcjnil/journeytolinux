@@ -276,6 +276,37 @@ Java(TM) SE Runtime Environment (build 1.7.0_51-b13)
 Java HotSpot(TM) 64-Bit Server VM (build 24.51-b03, mixed mode)
 		</pre>
 		<p>至于IDE,Eclipse,还是去<a href="http://www.eclipse.org/downloads/">官网</a>下载最靠谱吧!解压即可用！</p>
+
+		<h3 id="3.5">web开发环境配置</h3>
+		<p>要开发WEB,我们首先就要配置WEB环境,比较著名的环境就是LAMP,参阅<a href="http://zh.wikipedia.org/wiki/LAMP">wiki:LAMP</a>,而在Linux下安装,十分简单,只需要很少的命令就可以完成所有的事情!在这里可以尽情的鄙视Windows</p>
+		<pre class="prettyprint">
+$ sudo apt-get install tasksel
+$ sudo tasksel install lamp-server
+		</pre>
+		<p>Tasksel是一个很方便的Linux下安装服务器程序的软件,直接安装LAMP组件,则可以自动帮你安装apache,MySQL,PHP,并且可以很方便的解决所有依赖问题,十分方便!</p>
+		<p>默认的www目录(就是网页存储的地方啦),在/var/www,但是该目录的所有者不是当前用户,所以我们需要修改器owner,这样才可以十分方便的配置网页</p>
+		<pre class="prettyprint">
+$ sudo chown nil /var/www #这里的nil就是当前用户名咯
+		</pre>
+		<p>检验apache是否安装好了,可以访问http://localhost,出现It works就代表Apache是完美的,接着在/var/www里面添加index.php</p>
+		<code>
+		<pre class="prettyprint">	
+&lt;?php
+	phpinfo();
+?&gt;
+		</pre>
+		</code>
+		<p>然后访问http://localhost/index.php,如果出现php的信息,那么php也是正常的!</p>
+		<p>不过安装好了LAMP组件之后,对于新手来说,如何配置数据库啊什么的还是一件难事,这里,我推荐安装webmin这个组建,可以很方便的配置,去<a href="http://www.webmin.com/download.html">官网</a>下载,安装即可,之后就可以去https://localhost:10000/,输入当前用户名和密码就可以管理啦!</p>	
+		<p>至于前端编辑器,笔者推荐的是Sublime Text + Chrome的组合,十分方便!下面的就是Sublime Text的调试攻略,首先就是安装了～</p>
+		<pre class="prettyprint">
+$ sudo apt-get install sublime-text-installer
+		</pre>
+		<p>还是一条命令,十分简单,其实单独的文本编辑器谁都可以,但是ST的厉害在于她的性感以及其强大的插件,在ST里面CTRL+~打开console栏,输入命令,安装插件管理程序Package Control</p>
+		<pre class="prettyprint">
+import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())
+		</pre>
+		<p>之后就可以在Package Control中安装插件,CTRL + P 输入install,就可以搜索安装各种插件了,这里推荐几篇文章,这里不再赘述 <a href="http://dengo.org/archives/923">Sublime Text 3 插件</a></p>
 	</div> <!-- END .container !-->
 	<script src="js/prettify.js"></script> 
 	<script src="js/jquery.js"></script>
